@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://quinto.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1027.0
+margin_bottom = 605.0
+color = Color( 0.164706, 0.164706, 0.164706, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 980.0
+margin_bottom = 560.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="ColorRect/ColorRect2"]
+margin_left = -37.0
+margin_top = 61.0
+margin_right = 984.0
+margin_bottom = 131.0
+text = "Responda a mensagem utilizando o campo abaixo."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Atividade" type="Label" parent="ColorRect/ColorRect2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 77.0
+margin_bottom = 19.0
+text = "Atividade 4"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enviar" type="Button" parent="."]
+margin_left = 391.0
+margin_top = 304.0
+margin_right = 657.0
+margin_bottom = 324.0
+text = "Enviar"
+
+[node name="Mensagem" type="LineEdit" parent="."]
+margin_left = 266.0
+margin_top = 171.0
+margin_right = 780.0
+margin_bottom = 283.0
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 346.0
+margin_right = 980.0
+margin_bottom = 392.0
+text = "A mensagem enviada foi:"
+align = 1
+valign = 1
+
+[node name="Quadro" type="ColorRect" parent="."]
+margin_left = 266.0
+margin_top = 391.0
+margin_right = 780.0
+margin_bottom = 503.0
+color = Color( 0.160784, 0.160784, 0.196078, 1 )
+
+[node name="Resposta" type="RichTextLabel" parent="Quadro"]
+margin_left = 19.0
+margin_top = 12.0
+margin_right = 495.0
+margin_bottom = 96.0
+bbcode_enabled = true
+bbcode_text = "[center]"
+
+[connection signal="pressed" from="Enviar" to="." method="_on_Enviar_pressed"]
