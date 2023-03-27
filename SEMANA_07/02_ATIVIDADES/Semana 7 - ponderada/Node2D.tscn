@@ -382,7 +382,7 @@ position = Vector2( 373, 438 )
 scale = Vector2( 0.441839, 0.439974 )
 frames = SubResource( 12 )
 animation = "New Anim"
-frame = 23
+frame = 3
 playing = true
 
 [node name="Relogio" type="Sprite" parent="."]

@@ -5,6 +5,7 @@ var numero = []
 var vida = 0
 var perdeu = preload("res://perdeu.tscn").instance()
 
+# Responsável por mostrar o primeiro texto, esconder imagens e criar listas.
 func _ready():
 	$notificacao.text = "Não continue no pesadelo da decepção, não chegue a 3 nuvens. Saia daí."
 	$Vidas/NuvemContorno1/NuvemPreenchida1.hide()
@@ -13,25 +14,27 @@ func _ready():
 	
 	senha = [$Porta/senha1, $Porta/senha2, $Porta/senha3, $Porta/senha4]
 	numero = [$Porta/numero1, $Porta/numero2, $Porta/numero3, $Porta/numero4]
-	
+
+# Invoca as funções da senha e da perca de vidas.
 func _process(delta):
 	numerosenha()
 	senhafoco()
 	vidas()
 
+# Adiciona 1 perda de vida
 func _on_Porta_button_down():
 	$notificacao.show()
 	$Timer.start()
 	$notificacao.text = "Inútil, a porta está trancada. Digite a senha e aperte 'enter'."
 	vida += 1
 
-func senhafoco(): #Altera o foco das LineEdits
+# Altera o foco das LineEdits
+func senhafoco():
 	for i in range(len(senha)):
 		if len(senha[i].text) > 0 and i < (len(senha) - 1):
 				senha[i + 1].grab_focus()
-		if len(senha[3].text) > 0:
-			pass
 
+#Quando pressionado enter "valida" a senha e reseta as LineEdits e Labels
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_ENTER and event.pressed:
@@ -43,13 +46,16 @@ func _input(event):
 				senha[0].grab_focus()
 			vida += 1
 
-func numerosenha(): #Faz com que o texto das LineEdits apareçam nos Labels
+# Faz com que o texto das LineEdits apareçam nos Labels
+func numerosenha(): 
 	for i in range(len(numero)):
 		numero[i].text = senha[i].text
 
-func _on_Timer_timeout(): #Esconde a notificação após 2 segundos
+# Esconde a notificação após 2 segundos
+func _on_Timer_timeout(): 
 	$notificacao.hide()
 
+# Contador de vidas e leva para a tela de perdeu
 func vidas():
 	if vida == 1:
 		$Vidas/NuvemContorno1/NuvemPreenchida1.show()
@@ -59,7 +65,7 @@ func vidas():
 		$Vidas/NuvemContorno3/NuvemPreenchida3.show()
 		$perdeu.visible = true
 
-
+# As seguintes funções apenas mostram uma label e adicionam uma perda de vida.
 func _on_Retrato2_button_down():
 	$notificacao.show()
 	$Timer.start()
